@@ -10,13 +10,12 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 // ========== THEME TOGGLER FUNCTIONS ==========
 /**
- * Apply theme based on localStorage, or the device's setting if nothing is saved
+ * Apply theme based on localStorage, defaulting to dark mode if nothing is saved
  */
 function loadTheme() {
   const savedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+  if (savedTheme !== 'light') {
     document.body.classList.add('dark-mode');
     themeToggleBtn.checked = true; // Set toggle to "moon"
   } else {
